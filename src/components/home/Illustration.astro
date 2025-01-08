@@ -1,4 +1,11 @@
-<div class="illustration"></div>
+---
+import { Image } from "astro:assets";
+import Marc from "../../assets/marc-perrien-transparent.webp";
+---
+
+<div class="illustration">
+  <Image src={Marc} alt="Moi" />
+</div>
 
 <style lang="scss">
   .illustration {
@@ -6,5 +13,11 @@
     grid-column-end: 15;
 
     background-color: var(--orange);
+
+    img {
+      display: block;
+      height: auto;
+      width: 100%;
+    }
   }
 </style>

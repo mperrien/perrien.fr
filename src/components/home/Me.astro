@@ -68,6 +68,19 @@ import { Icon } from "astro-icon/components";
   </div>
 </header>
 
+<script>
+  var details = [...document.querySelectorAll("details")];
+  document.addEventListener("click", function (e) {
+    if (!details.some((d) => d.contains(e.target as Node))) {
+      details.forEach((d) => d.removeAttribute("open"));
+    } else {
+      details.forEach((d) =>
+        !d.contains(e.target as Node) ? d.removeAttribute("open") : "",
+      );
+    }
+  });
+</script>
+
 <style lang="scss">
   .me {
     grid-column-start: 2;
@@ -124,7 +137,7 @@ import { Icon } from "astro-icon/components";
                 display: flex;
                 align-items: center;
                 gap: 0.6rem;
-                padding: 0.3rem 0.6rem;
+                padding: 0.6rem 1rem;
                 width: 100%;
 
                 &:hover {

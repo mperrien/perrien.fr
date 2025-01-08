@@ -1,0 +1,64 @@
+<header class="me">
+  <h1>Hello,<br /> I'm Marc Perrien</h1>
+  <p>I design and build user interfaces.</p>
+  <div class="me__languages">
+    <ul class="list-reset">
+      <li>JavaScript</li>
+      <li>TypeScript</li>
+      <li>Vue.js</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>Astro</li>
+    </ul>
+  </div>
+  <div class="me__actions">
+    <ul class="list-reset">
+      <li><a href="/contact/">Hire Me</a></li>
+      <li>
+        <a href="https://github.com/mperrien">
+          <span class="screen-reader-text">GitHub profile</span>
+          GitHub Icon
+        </a>
+      </li>
+      <li>
+        <a href="https://codepen.io/mperrien">
+          <span class="screen-reader-text">Codepen profile</span>
+          Codepen Icon
+        </a>
+      </li>
+      <li>
+        <a href="https://linkedin.com">
+          <span class="screen-reader-text">LinkedIn profile</span>
+          LinkedIn Icon
+        </a>
+      </li>
+      <li>
+        <details>
+          <summary>
+            <span class="screen-reader-text">Download my resume</span>
+            Download Icon
+          </summary>
+          <ul class="list-reset">
+            <li>
+              <a href="/assets/marc-perrien-resume.pdf">English Resume</a>
+            </li>
+            <li><a href="/assets/marc-perrien-cv.pdf">CV en français</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<style lang="scss">
+  .me {
+    grid-column-start: 2;
+    grid-column-end: 9;
+
+    border-top: 0.1rem solid var(--grey-200);
+
+    h1 {
+      font-family: var(--display-font);
+    }
+  }
+</style>

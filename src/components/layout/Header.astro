@@ -1,0 +1,93 @@
+---
+
+---
+
+<header class="siteHeader">
+  <div class="container">
+    <a href="/" class="siteLogo">
+      <div>Marc</div>
+    </a>
+    <nav class="siteNav">
+      <ul class="list-reset">
+        <li>
+          <a class="button button--primary" href="/contact/">Let's chat</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style lang="scss">
+  .siteHeader {
+    padding-top: var(--space-small);
+    padding-bottom: var(--space-small);
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .siteLogo {
+      display: flex;
+      align-items: baseline;
+      gap: 0.2rem;
+
+      font-family: var(--body-font);
+      font-size: 1.6rem;
+      font-weight: 600;
+
+      @media (min-width: 32rem) {
+        font-size: 3rem;
+      }
+
+      div {
+        color: var(--text-color);
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &::after {
+        content: "";
+
+        display: block;
+        height: 1.2rem;
+        width: 1.2rem;
+
+        background: var(--orange);
+        border-radius: 50%;
+      }
+    }
+
+    .siteNav {
+      display: flex;
+      align-items: center;
+
+      font-size: 1.4rem;
+
+      @media (min-width: 32rem) {
+        font-size: inherit;
+      }
+
+      ul {
+        display: flex;
+        gap: var(--space-medium);
+
+        > li {
+          &:first-child {
+            display: none;
+
+            @media (min-width: 38rem) {
+              display: block;
+            }
+          }
+
+          a:not(.button) {
+            color: var(--text-color);
+          }
+        }
+      }
+    }
+  }
+</style>

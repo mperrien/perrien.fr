@@ -1,0 +1,59 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  href: string;
+}
+
+const linkProps = Astro.props;
+---
+
+<a href={linkProps.href}>
+  <span class="screen-reader-text">View more</span>
+  <Icon name="feather/arrow-up-right" />
+</a>
+
+<style lang="scss">
+  a {
+    position: absolute;
+    top: var(--space-small);
+    right: var(--space-small);
+
+    display: grid;
+    place-content: center;
+    height: 4rem;
+    width: 4rem;
+
+    background-color: white;
+    border-radius: 50%;
+
+    svg {
+      height: 2rem;
+      width: 2rem;
+    }
+
+    &:hover {
+      svg {
+        animation: 0.5s ease-in-out move;
+      }
+    }
+  }
+
+  @keyframes move {
+    0% {
+      transform: translate(0, 0);
+    }
+    30% {
+      transform: translate(1rem, -1rem);
+    }
+    80% {
+      transform: translate(-0.2rem, 0.2rem);
+    }
+    90% {
+      transform: translate(0.2rem, -0.2rem);
+    }
+    95% {
+      transform: translate(-0.1rem, 0.1rem);
+    }
+  }
+</style>

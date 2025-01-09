@@ -1,0 +1,30 @@
+.homeArticle {
+  position: relative;
+
+  grid-column-end: span 6;
+  overflow: hidden;
+
+  border-radius: var(--border-radius-xl);
+
+  &--hasPadding {
+    padding: var(--space-small);
+  }
+
+  &__content {
+    padding: var(--space-small);
+  }
+
+  &__label {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+
+    background-color: var(--orange);
+    border-radius: var(--border-radius-m);
+
+    color: white;
+    font-family: var(--body-font);
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+}

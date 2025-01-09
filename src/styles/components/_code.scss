@@ -1,0 +1,10 @@
+pre.astro-code {
+  padding: var(--space-small);
+
+  border-radius: var(--border-radius-l);
+  box-shadow: var(--box-shadow-diffuse);
+
+  code {
+    font-size: 1.6rem;
+  }
+}

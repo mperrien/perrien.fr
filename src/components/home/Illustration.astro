@@ -1,10 +1,14 @@
 ---
 import { Image } from "astro:assets";
-import Marc from "../../assets/marc-perrien-transparent.webp";
+import Marc from "../../assets/images/home/marc-perrien-transparent.webp";
 ---
 
 <div class="illustration">
-  <Image src={Marc} alt="Moi" />
+  <Image
+    src={Marc}
+    alt="A picture of me, over a bright orange background. I'm wearing a navy blue jacket and a very light blue R.E.M. t-shirt. I'm also wearing glasses, because I'm pretty much useless without them."
+    title=`"Why am I looking to the right?" Because that's where the DevTools panel is.`
+  />
 </div>
 
 <style lang="scss">

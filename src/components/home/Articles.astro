@@ -1,0 +1,29 @@
+---
+import ExperimentBuilder from "./articles/ExperimentBuilder.astro";
+import PriceCalculator from "./articles/PriceCalculator.astro";
+import BlueLimesAnimation from "./articles/BlueLimesAnimation.astro";
+import Guitars from "./articles/Guitars.astro";
+import ReliablyAnimated from "./articles/ReliablyAnimated.astro";
+import Interpol from "./articles/Interpol.astro";
+import Running from "./articles/Running.astro";
+---
+
+<section class="articles">
+  <ExperimentBuilder />
+  <PriceCalculator />
+  <BlueLimesAnimation />
+  <Guitars />
+  <ReliablyAnimated />
+  <Interpol />
+  <Running />
+</section>
+
+<style lang="scss">
+  .articles {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: repeat(auto, 1fr);
+    gap: var(--space-small);
+    grid-column: 2 / span 12;
+  }
+</style>

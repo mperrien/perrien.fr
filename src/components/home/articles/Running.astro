@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+import Winflo from "../../../assets/images/home/nike-winflo-11-goretex.webp";
+---
+
+<article class="homeArticle">
+  <div class="homeArticle__content">
+    <h2>I like running</h2>
+    <p>But who doesn't, these days?</p>
+  </div>
+  <Image src={Winflo} alt="A picture of Nike Winflo 11 GORETEX running show" />
+</article>
+
+<style lang="scss">
+  article {
+    > div {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+
+      display: flex;
+      flex-direction: column;
+      padding-bottom: var(--space-large);
+
+      opacity: 0;
+
+      h2 {
+        margin-top: auto;
+        margin-bottom: 0;
+
+        color: #7bcdca;
+        font-family: var(--body-font);
+        font-size: clamp(6rem, 20vw, 12rem);
+        text-transform: uppercase;
+      }
+
+      p {
+        display: inline-block;
+        padding: 0 0.6rem;
+
+        background-color: #7bcdca;
+      }
+    }
+
+    img {
+      display: block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &:hover {
+      > div {
+        opacity: 1;
+      }
+    }
+  }
+</style>

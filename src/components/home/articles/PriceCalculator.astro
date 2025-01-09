@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import background from "../../../assets/images/home/sebastian-svenson-LpbyDENbQQg-unsplash.jpg";
+
+import ArticleLink from "@/components/ui/ArticleLink.astro";
+import VideoContainer from "@/components/ui/VideoContainer.astro";
+---
+
+<article class="homeArticle">
+  <div class="background">
+    <Image src={background} alt="" />
+  </div>
+  <div class="content">
+    <VideoContainer
+      src="/assets/video/price-calculator.mov"
+      poster="/assets/images/price-calculator.webp"
+      alt="A price calculator displays various prices depending on user-selected options."
+      height="760"
+      width="968"
+      shadow={true}
+      rounded={true}
+    />
+  </div>
+</article>
+
+<style lang="scss">
+  article {
+    .background {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .content {
+      // z-index: 2;
+
+      padding: var(--space-large);
+    }
+  }
+</style>

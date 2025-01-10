@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import background from "../../../assets/images/home/sebastian-svenson-LpbyDENbQQg-unsplash.jpg";
+import background from "@/assets/images/home/milad-fakurian-PGdW_bHDbpI-unsplash.jpg";
 
 import ArticleLink from "@/components/ui/ArticleLink.astro";
 import VideoContainer from "@/components/ui/VideoContainer.astro";
 ---
 
-<article class="homeArticle">
+<article class="homeArticle homeArticle--hasVideo">
   <div class="background">
     <Image src={background} alt="" />
   </div>
@@ -26,6 +26,9 @@ import VideoContainer from "@/components/ui/VideoContainer.astro";
 
 <style lang="scss">
   article {
+    // display:;
+    // place-content: center;
+
     .background {
       position: absolute;
       height: 100%;
@@ -39,8 +42,6 @@ import VideoContainer from "@/components/ui/VideoContainer.astro";
     }
 
     .content {
-      // z-index: 2;
-
       padding: var(--space-large);
     }
   }

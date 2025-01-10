@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import background from "../../../assets/images/home/sebastian-svenson-LpbyDENbQQg-unsplash.jpg";
+import background from "@/assets/images/home/sebastian-svenson-LpbyDENbQQg-unsplash.jpg";
 
 import ArticleLink from "@/components/ui/ArticleLink.astro";
 import VideoContainer from "@/components/ui/VideoContainer.astro";
 ---
 
-<article class="homeArticle">
+<article class="homeArticle homeArticle--hasvideo">
   <div class="background">
     <Image src={background} alt="" />
   </div>

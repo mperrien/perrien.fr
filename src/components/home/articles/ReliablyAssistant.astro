@@ -1,16 +1,19 @@
 ---
 import { Image } from "astro:assets";
-import background from "@/assets/images/home/xinyi-wen-qjCHPZbeXCQ-unsplash.jpg";
+import background from "@/assets/images/home/reliably-assistant-social.webp";
 
 import ArticleLink from "@/components/ui/ArticleLink.astro";
-import VideoContainer from "@/components/ui/VideoContainer.astro";
+// import VideoContainer from "@/components/ui/VideoContainer.astro";
 ---
 
-<article class="homeCard homeCard--hasVideo">
+<article class="homeCard homeCard--hasvideo">
   <div class="background">
-    <Image src={background} alt="" />
+    <Image
+      src={background}
+      alt='The text "Reliably Assistant" written over a dark blue, pink, and dark purle, sci-fi looking night sky.'
+    />
   </div>
-  <div class="content">
+  <!-- <div class="content">
     <VideoContainer
       src="/assets/video/bluelimes-animate.mp4"
       poster="/assets/images/blue-limes-animation.webp"
@@ -20,8 +23,8 @@ import VideoContainer from "@/components/ui/VideoContainer.astro";
       shadow={true}
       rounded={true}
     />
-  </div>
-  <ArticleLink href="/blue-limes-animation/" />
+  </div> -->
+  <ArticleLink href="/reliably-assistant/" />
 </article>
 
 <style lang="scss">
@@ -38,8 +41,8 @@ import VideoContainer from "@/components/ui/VideoContainer.astro";
       }
     }
 
-    .content {
-      padding: var(--space-large);
-    }
+    // .content {
+    //   padding: var(--space-large);
+    // }
   }
 </style>

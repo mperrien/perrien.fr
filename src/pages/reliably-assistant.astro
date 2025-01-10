@@ -1,0 +1,210 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import PageHeader from "@/components/ui/PageHeader.astro";
+import VideoContainer from "@/components/ui/VideoContainer.astro";
+import LetsChat from "@/components/ui/LetsChat.astro";
+---
+
+<Layout
+  title="Reliably Assistant"
+  description="The Reliably Assistant is an AI-powered "
+>
+  <main class="page">
+    <div class="assistantBackground">
+      <h1><span>Reliably</span> <span>Assistant</span></h1>
+    </div>
+    <div class="assistantContent">
+      <section class="assistantContent__intro">
+        <p>
+          After completing work on an experiment builder, the Reliably team
+          decided to experiment on using generative AI write experiments.
+        </p>
+      </section>
+
+      <section>
+        <h2>Easier experiments</h2>
+        <p>
+          The <a href="/experiment-builder/"
+            >experiment builder removed a lot of complexity</a
+          >, with Reliably users not needing to write JSON files anymore.
+          Nevertheless, it still let them with over 200 actions (the basic
+          building blocks) to choose from, which can be overwhelming. That's
+          when we decided to experiment with using ChatGPT to write experiments.
+        </p>
+        <h3>Preventing hallucinations</h3>
+        <p>
+          As the corpus of publicly available JSON experiments is quite small
+          (experiments are most often kept private by organizations), ChatGPT
+          has a tendency to invent actions when requested to write experiments.
+        </p>
+        <p>
+          To workaround this problem, we provide him with the list of actions
+          and their descriptions, as a pre-promt. We also require it to only use
+          actions from this pre-existing pool.
+        </p>
+        <h3>Defining the output</h3>
+        <p>
+          Finally, we specify an output format in JSON, that can be passed to,
+          and parsed by, the front-end interface.
+        </p>
+      </section>
+
+      <section>
+        <VideoContainer
+          src="/assets/video/experiment-builder-3.webm"
+          poster="/assets/video/experiment-builder-3.webp"
+          alt="Video of activities being reorder with drag and drop."
+          height="720"
+          width="2384"
+          shadow={true}
+          rounded={true}
+        />
+        <div>
+          <h2>Drag to rearrange</h2>
+          <p>
+            Order matters a lot in experiments. <strong
+              >Actions can dragged across sections and reordered</strong
+            >.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <h2>Fine settings</h2>
+          <p>
+            Users also have access to additional settings for each experiment
+            section. One important goal of the builder was to keep all of the
+            many settings that are available when writing an experiment JSON
+            file, so we would <strong
+              >not sacrifice configurability for user-friendliness</strong
+            >.
+          </p>
+        </div>
+        <VideoContainer
+          src="/assets/video/experiment-builder-4.webm"
+          poster="/assets/video/experiment-builder-4.webp"
+          alt="Choosing the verification block settings"
+          height="720"
+          width="820"
+          shadow={true}
+          rounded={true}
+        />
+      </section>
+    </div>
+    <LetsChat />
+  </main>
+
+  <style lang="scss">
+    .page {
+      display: grid;
+      grid-template-columns:
+        max(calc(50vw - (var(--max-width) / 2)), var(--space-small))
+        repeat(12, 1fr)
+        max(calc(50vw - (var(--max-width) / 2)), var(--space-small));
+      gap: var(--space-small);
+
+      .assistantBackground {
+        grid-column: 1 / span 14;
+
+        display: grid;
+        grid-template-columns: subgrid;
+        place-content: center;
+        height: 48rem;
+
+        background: transparent
+          url("/assets/images/jr-korpa-9XngoIpxcEo-unsplash-60-800.jpg")
+          no-repeat center center / 100% auto;
+
+        @media (min-width: 800px) {
+          background-image: url("/assets/images/jr-korpa-9XngoIpxcEo-unsplash-60-1080.jpg");
+        }
+
+        @media (min-width: 1200px) {
+          background-image: url("/assets/images/jr-korpa-9XngoIpxcEo-unsplash-60-1440.jpg");
+        }
+
+        @media (min-width: 1600px) {
+          background-image: url("/assets/images/jr-korpa-9XngoIpxcEo-unsplash-60-1920.jpg");
+        }
+
+        h1 {
+          grid-column: 2 / span 12;
+
+          color: white;
+          font-family: "Barlow", var(--body-font);
+          text-align: center;
+
+          > span {
+            display: block;
+
+            &:first-child {
+              position: relative;
+              z-index: 2;
+
+              color: hsl(329, 100%, 95%);
+              font-size: clamp(6rem, 8vw, 10rem);
+              text-shadow: var(--box-shadow-sharp);
+              font-weight: 900;
+            }
+
+            &:last-child {
+              margin-top: clamp(-9rem, -9vw, -4rem);
+
+              font-weight: 900;
+
+              font-size: clamp(7rem, 20vw, 24rem);
+            }
+            // font-family: var(--body-font);
+            text-align: center;
+          }
+        }
+      }
+
+      .assistantContent {
+        grid-column: 2 / span 12;
+
+        > section + section {
+          margin-top: var(--space-large);
+        }
+
+        > section {
+          // display: grid;
+          // grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+          // gap: var(--space-medium);
+
+          &:first-child {
+            // display: block;
+
+            font-family: var(--display-font);
+            font-size: 3.2rem;
+            text-align: center;
+
+            p {
+              margin-right: auto;
+              margin-left: auto;
+              max-width: 66ch;
+            }
+          }
+
+          h2 {
+            // font-family: var(--body-font);
+            // font-size: 2.4rem;
+          }
+        }
+      }
+    }
+
+    @font-face {
+      font-family: "Barlow";
+      font-style: normal;
+      font-weight: 900;
+      src:
+        local(""),
+        url("/assets//fonts/barlow-v12-latin-900.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/assets/fonts/barlow-v12-latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+  </style>
+</Layout>

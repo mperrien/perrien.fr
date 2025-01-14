@@ -215,6 +215,8 @@ import Assistant04 from "@/assets/images/assistant/04-assistant-configure.webp";
           > span {
             display: block;
 
+            text-align: center;
+
             &:first-child {
               position: relative;
               z-index: 2;
@@ -232,8 +234,6 @@ import Assistant04 from "@/assets/images/assistant/04-assistant-configure.webp";
 
               font-size: clamp(7rem, 20vw, 24rem);
             }
-            // font-family: var(--body-font);
-            text-align: center;
           }
         }
       }
@@ -254,10 +254,6 @@ import Assistant04 from "@/assets/images/assistant/04-assistant-configure.webp";
         }
 
         > section {
-          // display: grid;
-          // grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
-          // gap: var(--space-medium);
-
           > h2,
           > h3,
           > p {
@@ -273,10 +269,6 @@ import Assistant04 from "@/assets/images/assistant/04-assistant-configure.webp";
 
           h2 {
             margin-bottom: var(--space-large);
-          }
-
-          &:first-child {
-            // display: block;
           }
 
           &.workflow {
@@ -297,9 +289,7 @@ import Assistant04 from "@/assets/images/assistant/04-assistant-configure.webp";
 
               display: grid;
               grid-template-columns: repeat(2, 1fr);
-              // grid-template-rows: repeat(2, 1fr);
               gap: var(--space-large);
-              // min-height: 100vh;
 
               &::before {
                 content: counter(workflow);
@@ -331,7 +321,6 @@ import Assistant04 from "@/assets/images/assistant/04-assistant-configure.webp";
               }
 
               &__content {
-                // align-self: end;
                 h3 {
                   display: flex;
                   align-items: baseline;
@@ -351,7 +340,6 @@ import Assistant04 from "@/assets/images/assistant/04-assistant-configure.webp";
               }
 
               &__media {
-                // align-self: start;
                 grid-column-start: 2;
 
                 img {
@@ -363,16 +351,6 @@ import Assistant04 from "@/assets/images/assistant/04-assistant-configure.webp";
                   box-shadow: var(--box-shadow-diffuse);
                 }
               }
-
-              // > svg {
-              //   position: absolute;
-              //   top: 0;
-              //   left: 0;
-              //   z-index: 1;
-
-              //   height: auto;
-              //   width: 100%;
-              // }
 
               &:nth-child(2n) {
                 .workflowStep__content {

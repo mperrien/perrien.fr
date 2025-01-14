@@ -30,6 +30,10 @@
 
     color: white;
 
+    &:visited {
+      color: white;
+    }
+
     &:hover {
       background-color: var(--orange-bright);
     }
@@ -87,6 +91,10 @@
 
       height: 2rem;
       width: 2rem;
+    }
+
+    &:visited {
+      color: var(--text-color);
     }
 
     &:hover {

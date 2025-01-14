@@ -1,9 +1,14 @@
 ---
+import { Image } from "astro:assets";
+
 import Layout from "../layouts/Layout.astro";
 
-import PageHeader from "@/components/ui/PageHeader.astro";
 import VideoContainer from "@/components/ui/VideoContainer.astro";
 import LetsChat from "@/components/ui/LetsChat.astro";
+
+import Assistant01 from "@/assets/images/assistant/01-assistant-prompt.webp";
+import Assistant02 from "@/assets/images/assistant/02-assistant-tag.webp";
+import Assistant04 from "@/assets/images/assistant/04-assistant-configure.webp";
 ---
 
 <Layout
@@ -18,17 +23,17 @@ import LetsChat from "@/components/ui/LetsChat.astro";
       <section class="assistantContent__intro">
         <p>
           After completing work on an experiment builder, the Reliably team
-          decided to experiment on using generative AI write experiments.
+          decided to experiment using generative AI write experiments.
         </p>
       </section>
 
       <section>
-        <h2>Easier experiments</h2>
+        <h2 class="text-center">Easier experiments</h2>
         <p>
           The <a href="/experiment-builder/"
             >experiment builder removed a lot of complexity</a
           >, with Reliably users not needing to write JSON files anymore.
-          Nevertheless, it still let them with over 200 actions (the basic
+          Nevertheless, it still let them with over 200 activities (the basic
           building blocks) to choose from, which can be overwhelming. That's
           when we decided to experiment with using ChatGPT to write experiments.
         </p>
@@ -36,12 +41,13 @@ import LetsChat from "@/components/ui/LetsChat.astro";
         <p>
           As the corpus of publicly available JSON experiments is quite small
           (experiments are most often kept private by organizations), ChatGPT
-          has a tendency to invent actions when requested to write experiments.
+          has a tendency to invent activities when requested to write
+          experiments.
         </p>
         <p>
-          To workaround this problem, we provide him with the list of actions
+          To workaround this problem, we provide him with the list of activities
           and their descriptions, as a pre-promt. We also require it to only use
-          actions from this pre-existing pool.
+          activities from this pre-existing pool.
         </p>
         <h3>Defining the output</h3>
         <p>
@@ -50,48 +56,117 @@ import LetsChat from "@/components/ui/LetsChat.astro";
         </p>
       </section>
 
-      <section>
-        <VideoContainer
-          src="/assets/video/experiment-builder-3.webm"
-          poster="/assets/video/experiment-builder-3.webp"
-          alt="Video of activities being reorder with drag and drop."
-          height="720"
-          width="2384"
-          shadow={true}
-          rounded={true}
-        />
-        <div>
-          <h2>Drag to rearrange</h2>
-          <p>
-            Order matters a lot in experiments. <strong
-              >Actions can dragged across sections and reordered</strong
-            >.
-          </p>
-        </div>
+      <section class="workflow">
+        <h2 class="text-center">The workflow</h2>
+        <ol class="list-reset">
+          <li class="workflowStep">
+            <div class="workflowStep__content">
+              <h3>Ask a question</h3>
+              <p>
+                When a user clicks on the Reliably Assistant button, the regular
+                interface is replaced by the Assistant interface, which displays
+                a single field where the user can ask a question.
+              </p>
+            </div>
+            <div class="workflowStep__media">
+              <Image
+                src={Assistant01}
+                alt="The Assistant prompts 'How can I help you', and the user types in a field: 'Fail an AZ, please'"
+              />
+            </div>
+          </li>
+          <li class="workflowStep">
+            <div class="workflowStep__content">
+              <h3>Specify a target system</h3>
+              <p>
+                The Assistant then asks the user to select a target system. It
+                will allow the Assistant to only pick activities that work with
+                the user's system.
+              </p>
+              <p>
+                Asking the user to select options from a list is both
+                straightforward and more efficient than letting ChatGPT guess it
+                from the original question.
+              </p>
+            </div>
+            <div class="workflowStep__media">
+              <Image
+                src={Assistant02}
+                alt="The Assistant says 'Tags help me build an experiment with activities that are more suitable to your system. Select one or more tags and press Enter to continue.' The available tags are AWS, Google Cloud, and Kubernetes. AWS is selected."
+              />
+            </div>
+          </li>
+          <li class="workflowStep">
+            <div class="workflowStep__content">
+              <h3>Experiment creation</h3>
+              <p>
+                ChatGPT returns its answer as a streamed JSON file. Rather than
+                waiting for the experiment to be complete before displaying it
+                (ChatGPT 4 sometimes takes its time), we display selected
+                activities on the fly, by fetching the result JSON file every 30
+                seconds, until it's returned as complete.
+              </p>
+            </div>
+            <div class="workflowStep__media">
+              <VideoContainer
+                src="/assets/video/assistant-03-create.mp4"
+                poster="/assets/video/assistant-03-create.webp"
+                alt="The Assistant creates the experiment by adding activities."
+                height="1080"
+                width="1152"
+                shadow={true}
+                rounded={true}
+              />
+            </div>
+          </li>
+          <li class="workflowStep">
+            <div class="workflowStep__content">
+              <h3>Configuration</h3>
+              <p>
+                The Assistant then prompts the user for required information
+                regarding each activity, such as targets or thresholds.
+              </p>
+            </div>
+            <div class="workflowStep__media">
+              <Image
+                src={Assistant04}
+                alt="The Assistant asks for some required information for each activity. For example, it asks for the Target Availability Zone. The user has typed eu-central-1a."
+              />
+            </div>
+          </li>
+          <li class="workflowStep">
+            <div class="workflowStep__content">
+              <h3>Run</h3>
+              <p>
+                The Assistant can then run the experiment in the cloud, and log
+                its results.
+              </p>
+            </div>
+            <div class="workflowStep__media">
+              <VideoContainer
+                src="/assets/video/assistant-05-run.mp4"
+                poster="/assets/video/assistant-05-run.webp"
+                alt="A yellow loader is pulsing under the message 'Your experiment is scheduled and will start soon'. Then, the loader color turns green and the message changes to 'Your experiment is running'. Finally, the message 'Experiment completed!' is displayed with a party popper emoji (🎉)."
+                height="720"
+                width="1310"
+                shadow={true}
+                rounded={true}
+              />
+            </div>
+          </li>
+        </ol>
       </section>
-
-      <section>
-        <div>
-          <h2>Fine settings</h2>
-          <p>
-            Users also have access to additional settings for each experiment
-            section. One important goal of the builder was to keep all of the
-            many settings that are available when writing an experiment JSON
-            file, so we would <strong
-              >not sacrifice configurability for user-friendliness</strong
-            >.
-          </p>
-        </div>
-        <VideoContainer
-          src="/assets/video/experiment-builder-4.webm"
-          poster="/assets/video/experiment-builder-4.webp"
-          alt="Choosing the verification block settings"
-          height="720"
-          width="820"
-          shadow={true}
-          rounded={true}
-        />
-      </section>
+    </div>
+    <div class="assistantYT">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/mfvxBmrAnss?si=r9hr0yUE1UGM4N0C"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
     </div>
     <LetsChat />
   </main>
@@ -111,11 +186,12 @@ import LetsChat from "@/components/ui/LetsChat.astro";
         display: grid;
         grid-template-columns: subgrid;
         place-content: center;
-        height: 48rem;
+        height: 100vh;
+        min-height: 48rem;
 
         background: transparent
           url("/assets/images/jr-korpa-9XngoIpxcEo-unsplash-60-800.jpg")
-          no-repeat center center / 100% auto;
+          no-repeat center center / cover;
 
         @media (min-width: 800px) {
           background-image: url("/assets/images/jr-korpa-9XngoIpxcEo-unsplash-60-1080.jpg");
@@ -165,8 +241,16 @@ import LetsChat from "@/components/ui/LetsChat.astro";
       .assistantContent {
         grid-column: 2 / span 12;
 
+        &__intro {
+          margin-top: calc(2 * var(--space-large));
+
+          font-family: var(--display-font);
+          font-size: 3.2rem;
+          // text-align: center;
+        }
+
         > section + section {
-          margin-top: var(--space-large);
+          margin-top: calc(3 * var(--space-large));
         }
 
         > section {
@@ -174,24 +258,153 @@ import LetsChat from "@/components/ui/LetsChat.astro";
           // grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
           // gap: var(--space-medium);
 
-          &:first-child {
-            // display: block;
+          > h2,
+          > h3,
+          > p {
+            margin-right: auto;
+            margin-left: auto;
+            width: 84rem;
+          }
 
-            font-family: var(--display-font);
-            font-size: 3.2rem;
-            text-align: center;
-
-            p {
-              margin-right: auto;
-              margin-left: auto;
-              max-width: 66ch;
-            }
+          h2,
+          h3 {
+            font-family: var(--body-font);
           }
 
           h2 {
-            // font-family: var(--body-font);
-            // font-size: 2.4rem;
+            margin-bottom: var(--space-large);
           }
+
+          &:first-child {
+            // display: block;
+          }
+
+          &.workflow {
+            counter-reset: workflow;
+
+            h2 {
+              margin-bottom: calc(2 * var(--space-large));
+            }
+
+            .workflowStep + .workflowStep {
+              margin-top: calc(3 * var(--space-large));
+            }
+
+            .workflowStep {
+              counter-increment: workflow;
+
+              position: relative;
+
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              // grid-template-rows: repeat(2, 1fr);
+              gap: var(--space-large);
+              // min-height: 100vh;
+
+              &::before {
+                content: counter(workflow);
+
+                position: absolute;
+                top: -6rem;
+                left: calc(50% - 5rem);
+                z-index: 1;
+
+                display: grid;
+                place-content: center;
+                height: 10rem;
+                width: 10rem;
+
+                background-color: var(--orange);
+                border-radius: 50%;
+
+                color: white;
+                font-size: 7.2rem;
+                font-weight: 600;
+              }
+
+              &__content,
+              &__media {
+                position: relative;
+                z-index: 3;
+
+                align-self: center;
+              }
+
+              &__content {
+                // align-self: end;
+                h3 {
+                  display: flex;
+                  align-items: baseline;
+                  gap: 0.2rem;
+
+                  font-family: var(--body-font);
+
+                  &::after {
+                    content: "";
+                    display: block;
+                    height: 1.2rem;
+                    width: 1.2rem;
+                    background: var(--orange);
+                    border-radius: 50%;
+                  }
+                }
+              }
+
+              &__media {
+                // align-self: start;
+                grid-column-start: 2;
+
+                img {
+                  display: block;
+                  height: auto;
+
+                  border: 0.1rem solid var(--grey-200);
+                  border-radius: var(--border-radius-m);
+                  box-shadow: var(--box-shadow-diffuse);
+                }
+              }
+
+              // > svg {
+              //   position: absolute;
+              //   top: 0;
+              //   left: 0;
+              //   z-index: 1;
+
+              //   height: auto;
+              //   width: 100%;
+              // }
+
+              &:nth-child(2n) {
+                .workflowStep__content {
+                  grid-column-start: 2;
+                }
+
+                .workflowStep__media {
+                  grid-column-start: 1;
+                  grid-row-start: 1;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .assistantYT {
+        grid-column: 2 / span 12;
+
+        margin-top: calc(3 * var(--space-large));
+        margin-bottom: calc(2 * var(--space-large));
+
+        iframe {
+          height: 100%;
+          width: 100%;
+          margin-top: var(--space-small);
+          margin-bottom: var(--space-small);
+
+          aspect-ratio: 16/9;
+
+          border-radius: var(--border-radius-m);
+          box-shadow: var(--box-shadow-diffuse);
         }
       }
     }

@@ -86,10 +86,15 @@ strong {
 }
 
 a {
-  color: var(--pink-500);
+  color: var(--orange);
   text-decoration: none;
 
+  &:visited {
+    color: var(--purple);
+  }
+
   &:hover {
+    color: var(--orange-bright);
     text-decoration: underline;
   }
 }

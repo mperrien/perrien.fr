@@ -1,0 +1,190 @@
+---
+import { Image } from "astro:assets";
+
+import Layout from "../layouts/Layout.astro";
+
+import TechnologyTag from "@/components/ui/TechnologyTag.astro";
+import LetsChat from "@/components/ui/LetsChat.astro";
+
+import Andres from "@/assets/images/bluelimes/andres.webp";
+import Bubbles from "@/assets/images/bluelimes/bubbles.webp";
+import Embarcadero from "@/assets/images/bluelimes/embarcadero.webp";
+import Polar from "@/assets/images/bluelimes/polar.webp";
+import Revenue from "@/assets/images/bluelimes/revenue.webp";
+import TransactionsBreakdown from "@/assets/images/bluelimes/transactions-breakdown.webp";
+import Transactions from "@/assets/images/bluelimes/transactions.webp";
+import Logistics from "@/assets/images/bluelimes/logistics.webp";
+import Tickets from "@/assets/images/bluelimes/tickets.webp";
+import Visitors from "@/assets/images/bluelimes/visitors.webp";
+
+const tags: string[] = ["Personal Project", "Chart.js", "Vue.js"];
+---
+
+<Layout
+  title="Charts and Widgets"
+  description="The Reliably Assistant is an AI-powered "
+>
+  <main class="page chartswidgets">
+    <header class="chartswidgetsHeader">
+      <div class="chartswidgetsHeader__content">
+        <h1>Charts <span>&</span> Widgets</h1>
+        <ul class="chartswidgetsHeader__tags list-reset">
+          {
+            tags.map((tag) => (
+              <li>
+                <TechnologyTag name={tag} />
+              </li>
+            ))
+          }
+        </ul>
+        <p>
+          A series of widgets and charts,<br /> for an unreleased personal project.
+        </p>
+      </div>
+      <Image
+        src={Andres}
+        alt="An orange radar chart on a dark blue background. The chart represents the skills of football player Andrés Iniesta."
+      />
+    </header>
+    <ul class="chartswidgets__cards list-reset">
+      <li class="bubbles">
+        <Image src={Bubbles} alt="" />
+      </li>
+      <li class="embarcadero">
+        <Image src={Embarcadero} alt="" />
+      </li>
+      <li class="polar">
+        <Image src={Polar} alt="" />
+      </li>
+      <li class="revenue">
+        <Image src={Revenue} alt="" />
+      </li>
+      <li class="transactions">
+        <Image src={Transactions} alt="" />
+      </li>
+      <li class="transactions-breakdown">
+        <Image src={TransactionsBreakdown} alt="" />
+      </li>
+      <li class="andres">
+        <Image src={Andres} alt="" />
+      </li>
+      <li class="logistics">
+        <Image src={Logistics} alt="" />
+      </li>
+      <li class="tickets">
+        <Image src={Tickets} alt="" />
+      </li>
+      <li class="visitors">
+        <Image src={Visitors} alt="" />
+      </li>
+    </ul>
+    <LetsChat />
+  </main>
+
+  <style lang="scss">
+    .chartswidgets {
+      display: grid;
+      grid-template-columns:
+        max(calc(50vw - (var(--max-width) / 2)), var(--space-small))
+        repeat(12, 1fr)
+        max(calc(50vw - (var(--max-width) / 2)), var(--space-small));
+      gap: var(--space-small);
+      overflow-x: hidden;
+
+      .chartswidgetsHeader {
+        grid-column: 1 / span 14;
+
+        display: grid;
+        grid-template-columns: subgrid;
+
+        background-color: #222841;
+        background-image: linear-gradient(
+          to bottom,
+          #191c2c,
+          #1d2438 20%,
+          #222841 50%,
+          #1d2438 80%,
+          #191c2c
+        );
+
+        &__content {
+          grid-column: 2 / span 6;
+
+          align-content: center;
+        }
+
+        h1 {
+          color: white;
+          font-family: var(--body-font);
+
+          span {
+            color: var(--orange);
+          }
+        }
+
+        p {
+          margin-top: var(--space-medium);
+
+          color: white;
+        }
+
+        &__tags {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: var(--space-small);
+        }
+
+        img {
+          grid-column: 8 / 15;
+
+          height: auto;
+        }
+      }
+
+      .chartswidgets__cards {
+        grid-column: 2 / span 12;
+
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-template-rows: repeat(auto, 1fr);
+        gap: var(--space-medium);
+        margin-top: var(--space-large);
+        margin-bottom: var(--space-large);
+
+        li {
+          grid-column-end: span 2;
+
+          // overflow: hidden;
+
+          img {
+            display: block;
+            height: auto;
+            width: 100%;
+            object-fit: contain;
+
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--box-shadow-diffuse);
+          }
+        }
+
+        .bubbles,
+        .embarcadero {
+          grid-column-end: span 6;
+          grid-row-end: span 2;
+        }
+
+        .andres,
+        .polar,
+        .transactions-breakdown {
+          grid-column-end: span 4;
+          grid-row-end: span 2;
+        }
+
+        .visitors {
+          grid-column-end: span 4;
+        }
+      }
+    }
+  </style>
+</Layout>

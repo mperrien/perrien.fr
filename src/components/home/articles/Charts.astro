@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+import Bubbles from "@/assets/images/bluelimes/bubbles.webp";
+
+import ArticleLink from "@/components/ui/ArticleLink.astro";
+---
+
+<article class="homeCard">
+  <!-- <div class="homeCard__content"> -->
+  <!-- <h2>I like running</h2>
+    <p>But who doesn't, these days?</p> -->
+  <!-- </div> -->
+  <Image
+    src={Bubbles}
+    alt="A bubble chart with yellow bubbles on a pink background."
+  />
+  <ArticleLink href="/charts-widgets/" />
+</article>
+
+<style lang="scss">
+  article {
+    > div {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+
+      display: flex;
+      flex-direction: column;
+      padding-bottom: var(--space-large);
+
+      opacity: 0;
+
+      // h2 {
+      //   margin-top: auto;
+      //   margin-bottom: 0;
+
+      //   color: #7bcdca;
+      //   font-family: var(--body-font);
+      //   font-size: clamp(6rem, 20vw, 12rem);
+      //   text-transform: uppercase;
+      // }
+
+      // p {
+      //   display: inline-block;
+      //   padding: 0 0.6rem;
+
+      //   background-color: #7bcdca;
+      // }
+    }
+
+    img {
+      display: block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    // &:hover {
+    //   > div {
+    //     opacity: 1;
+    //   }
+    // }
+  }
+</style>

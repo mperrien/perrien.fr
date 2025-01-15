@@ -1,9 +1,13 @@
 ---
+import { Image } from "astro:assets";
+
 import Layout from "../layouts/Layout.astro";
 
 import PageHeader from "@/components/ui/PageHeader.astro";
 import VideoContainer from "@/components/ui/VideoContainer.astro";
 import LetsChat from "@/components/ui/LetsChat.astro";
+
+import Activity from "@/assets/images/builder/reliably-activity-2.png";
 ---
 
 <Layout
@@ -15,7 +19,14 @@ import LetsChat from "@/components/ui/LetsChat.astro";
       title="Reliably Experiment Builder"
       tags={["Vue.js", "TypeScript", "Design"]}
       text="Reliably is a SaaS product that helps users gain a better understanding of complex systems by running experiments. Those experiments are written using the JSON format defined by the open-source Chaos Toolkit. To make creating experiments more approachable, we created a graphical builder that lets users add, configure, and reorder, the various activities that form an experiment."
-    />
+      bgcolor="#daf1c2"
+      decorate={true}
+    >
+      <Image
+        src={Activity}
+        alt="A Reliably action targeting AWS EC2. The action is named attach_volume, and its description reads 'Attaches a previously detached EBS volume to its associated ECS instance'."
+      />
+    </PageHeader>
     <div class="experimentBuilder">
       <section>
         <VideoContainer
@@ -124,7 +135,7 @@ import LetsChat from "@/components/ui/LetsChat.astro";
         max(calc(50vw - (var(--max-width) / 2)), var(--space-small))
         repeat(12, 1fr)
         max(calc(50vw - (var(--max-width) / 2)), var(--space-small));
-      gap: var(--space-small);
+      gap: var(--space-medium);
 
       .experimentBuilder {
         grid-column: 2 / span 12;

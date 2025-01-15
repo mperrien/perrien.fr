@@ -5,45 +5,75 @@ export interface Props {
   title: string;
   tags: string[];
   text?: string;
+  color?: string;
+  bgcolor?: string;
+  decorate?: boolean;
 }
 
 const props = Astro.props;
+const textColor = props.color ? props.color : "hsl(240, 3.7%, 15.88%)";
+const backgroundColor = props.bgcolor ? props.bgcolor : "transparent";
 ---
 
 <header class="pageHeader">
-  <h1 class="text-center">{props.title}</h1>
-  {
-    props.tags.length && (
-      <ul class="pageHeader__tags list-reset">
-        {props.tags.map((tag) => (
-          <li>
-            <TechnologyTag name={tag} />
-          </li>
-        ))}
-      </ul>
-    )
-  }
-  {props.text && <p class="pageHeader__text text-center">{props.text}</p>}
+  <div class="pageHeader__content">
+    <h1>{props.title}</h1>
+    {
+      props.tags.length && (
+        <ul class="pageHeader__tags list-reset">
+          {props.tags.map((tag) => (
+            <li>
+              <TechnologyTag name={tag} />
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    {props.text && <p class="pageHeader__text">{props.text}</p>}
+  </div>
+  <div
+    class:list={[
+      "pageHeader__illustration",
+      { "pageHeader__illustration--decorate": props.decorate === true },
+    ]}
+  >
+    <slot />
+  </div>
 </header>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ textColor, backgroundColor }}>
   .pageHeader {
-    grid-column: 2 / span 12;
+    grid-column: 1 / span 14;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: subgrid;
     margin-bottom: var(--space-large);
+    padding-top: var(--space-large);
+    padding-bottom: var(--space-large);
 
-    h1 {
-      margin-top: var(--space-large);
+    background-color: var(--backgroundColor);
+
+    &__content {
+      grid-column: 2 / span 6;
+
+      // display: flex;
+      // flex-direction: column;
+      // align-items: center;
+      margin-bottom: var(--space-large);
+
+      color: var(--textColor);
+
+      h1 {
+        margin-top: var(--space-large);
+
+        font-family: var(--body-font);
+      }
     }
 
     &__tags {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: center;
       gap: var(--space-small);
     }
 
@@ -53,6 +83,27 @@ const props = Astro.props;
       font-size: 2.4rem;
       line-height: 1.5;
       max-width: 66ch;
+    }
+
+    &__illustration {
+      grid-column: 8 / span 6;
+
+      display: grid;
+      align-items: center;
+      justify-items: end;
+
+      :global(img) {
+        display: block;
+        height: auto;
+        max-width: 90%;
+      }
+
+      &--decorate {
+        :global(img) {
+          border-radius: var(--border-radius-l);
+          box-shadow: var(--box-shadow-diffuse);
+        }
+      }
     }
   }
 </style>

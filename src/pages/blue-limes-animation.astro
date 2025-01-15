@@ -2,6 +2,7 @@
 import { Code } from "astro:components";
 import { Image } from "astro:assets";
 import BlueLimes from "../assets/images/blue-limes-logo.webp";
+import Animate from "../assets/images/bluelimes/blue-limes-animate.webp";
 
 import Layout from "../layouts/Layout.astro";
 
@@ -57,7 +58,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <PageHeader
       title="A 'nudge-y' animation for Blue Limes"
       tags={["JavaScript", "CSS", "Design"]}
-    />
+      bgcolor="#ff9df4"
+    >
+      <Image
+        src={Animate}
+        alt="Tetris blocks can be gathered to form a new rectangle shape."
+      />
+    </PageHeader>
     <div class="bluelimesAnimation">
       <div class="video">
         <VideoContainer

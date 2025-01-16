@@ -1,0 +1,112 @@
+---
+import Layout from "@/layouts/FullPageLayout.astro";
+---
+
+<Layout title="Contact" description="Send me a message">
+  <main class="page page--full contact">
+    <header class="contact__header">
+      <a href="/" class="siteLogo">
+        <div>Marc</div>
+      </a>
+      <h1>Let's get in touch</h1>
+    </header>
+    <div class="contact__content">
+      <form class="form" name="contact" method="POST" data-netlify="true">
+        <p class="inputWrapper">
+          <label for="name">
+            Your Name <span class="required">Required</span>
+          </label>
+          <input type="text" name="name" id="name" required />
+        </p>
+        <p class="inputWrapper">
+          <label for="email">
+            Your Email <span class="required">Required</span>
+          </label>
+          <input type="email" name="email" id="email" />
+        </p>
+        <p class="inputWrapper">
+          <label for="message">
+            Message <span class="required">Required</span>
+          </label>
+          <textarea name="message" id="message" rows="5" required></textarea>
+        </p>
+        <p class="inputWrapper">
+          <button type="submit" class="button button--primary">Send</button>
+        </p>
+      </form>
+    </div>
+  </main>
+</Layout>
+
+<style lang="scss">
+  .contact {
+    display: grid;
+    grid-template-columns:
+      max(calc(50vw - (var(--max-width) / 2)), var(--space-small))
+      repeat(12, 1fr)
+      max(calc(50vw - (var(--max-width) / 2)), var(--space-small));
+    gap: var(--space-medium);
+    overflow-x: hidden;
+
+    background-color: var(--text-color-bright);
+
+    color: white;
+
+    &__header {
+      grid-column: 2 / span 6;
+
+      min-height: 100vh;
+      padding-top: var(--space-small);
+
+      .siteLogo {
+        display: flex;
+        align-items: baseline;
+        gap: 0.2rem;
+
+        color: var(--white);
+        font-family: var(--body-font);
+        font-size: 1.6rem;
+        font-weight: 600;
+
+        @media (min-width: 32rem) {
+          font-size: 3rem;
+        }
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        &::after {
+          content: "";
+
+          display: block;
+          height: 1.2rem;
+          width: 1.2rem;
+
+          background: var(--orange);
+          border-radius: 50%;
+        }
+      }
+
+      h1 {
+        font-family: var(--body-font);
+        font-size: clamp(7.2rem, 14vw, 20rem);
+        font-weight: 900;
+      }
+    }
+
+    &__content {
+      grid-column: 8 / span 6;
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .form {
+        textarea {
+          resize: vertical;
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+import { Image } from "astro:assets";
+
+import Layout from "@/layouts/DefaultLayout.astro";
+import PageHeader from "@/components/ui/PageHeader.astro";
+---
+
+<Layout
+  title="Legal Notice"
+  description="The required-by-the-law legal notice."
+>
+  <main class="page legalNotice">
+    <PageHeader
+      title="Legal notice"
+      text="As required by french laws..."
+      tags={[]}
+    />
+    <div class="legalNotice__content">
+      <section>
+        <div>
+          <p>
+            Ce site est publié par<br />
+            <strong>Marc Perrien</strong>
+          </p>
+          <address>
+            1 rue du Camp de Verdun<br />
+            35136 Saint-Jacques de la Lande<br />
+            France<br />
+          </address>
+        </div>
+        <div>
+          <p>Contact: <a href="mailto:marc@perrien.fr">marc@perrien.fr</a></p>
+        </div>
+      </section>
+      <section>
+        <div>
+          <p>
+            Il est hébergé par<br />
+            <strong>Netlify</strong>
+          </p>
+          <address>
+            131 Albright Way<br />
+            Los Gatos, CA 95032<br />
+            USA
+          </address>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style lang="scss">
+  .legalNotice {
+    display: grid;
+    grid-template-columns:
+      max(calc(50vw - (var(--max-width) / 2)), var(--space-small))
+      repeat(12, 1fr)
+      max(calc(50vw - (var(--max-width) / 2)), var(--space-small));
+    gap: var(--space-medium);
+    overflow-x: hidden;
+
+    &__content {
+      grid-column: 2 / span 12;
+
+      display: grid;
+      grid-template-columns: subgrid;
+
+      section {
+        grid-column-end: span 6;
+
+        > div + div {
+          margin-top: var(--space-large);
+        }
+      }
+    }
+  }
+</style>

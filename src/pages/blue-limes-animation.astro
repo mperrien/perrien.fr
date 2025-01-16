@@ -4,11 +4,10 @@ import { Image } from "astro:assets";
 import BlueLimes from "../assets/images/blue-limes-logo.webp";
 import Animate from "../assets/images/bluelimes/blue-limes-animate.webp";
 
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/DefaultLayout.astro";
 
 import PageHeader from "@/components/ui/PageHeader.astro";
 import VideoContainer from "@/components/ui/VideoContainer.astro";
-import LetsChat from "@/components/ui/LetsChat.astro";
 
 const animationjs = `function calculateDistance(elem, mouseX, mouseY) {
   let a = mouseX - (elem.offsetLeft + elem.offsetWidth / 2);
@@ -96,7 +95,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         <Code code={animationjs} lang="js" />
       </div>
     </div>
-    <LetsChat />
   </main>
 
   <style lang="scss">
@@ -106,7 +104,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         max(calc(50vw - (var(--max-width) / 2)), var(--space-small))
         repeat(12, 1fr)
         max(calc(50vw - (var(--max-width) / 2)), var(--space-small));
-      gap: var(--space-small);
+      gap: var(--space-medium);
 
       .bluelimesAnimation {
         grid-column: 2 / span 12;

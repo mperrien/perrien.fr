@@ -19,7 +19,7 @@ const backgroundColor = props.bgcolor ? props.bgcolor : "transparent";
   <div class="pageHeader__content">
     <h1>{props.title}</h1>
     {
-      props.tags.length && (
+      props.tags.length > 0 && (
         <ul class="pageHeader__tags list-reset">
           {props.tags.map((tag) => (
             <li>

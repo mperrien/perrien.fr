@@ -1,11 +1,10 @@
 ---
 import { Image } from "astro:assets";
 
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/DefaultLayout.astro";
 
 import PageHeader from "@/components/ui/PageHeader.astro";
 import VideoContainer from "@/components/ui/VideoContainer.astro";
-import LetsChat from "@/components/ui/LetsChat.astro";
 
 import Activity from "@/assets/images/builder/reliably-activity-2.png";
 ---
@@ -125,7 +124,6 @@ import Activity from "@/assets/images/builder/reliably-activity-2.png";
         />
       </section>
     </div>
-    <LetsChat />
   </main>
 
   <style lang="scss">

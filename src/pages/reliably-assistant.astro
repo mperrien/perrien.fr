@@ -1,10 +1,9 @@
 ---
 import { Image } from "astro:assets";
 
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/DefaultLayout.astro";
 
 import VideoContainer from "@/components/ui/VideoContainer.astro";
-import LetsChat from "@/components/ui/LetsChat.astro";
 
 import Assistant01 from "@/assets/images/assistant/01-assistant-prompt.webp";
 import Assistant02 from "@/assets/images/assistant/02-assistant-tag.webp";
@@ -170,7 +169,6 @@ import Assistant04 from "@/assets/images/assistant/04-assistant-configure.webp";
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen></iframe>
     </div>
-    <LetsChat />
   </main>
 
   <style lang="scss">
@@ -180,7 +178,7 @@ import Assistant04 from "@/assets/images/assistant/04-assistant-configure.webp";
         max(calc(50vw - (var(--max-width) / 2)), var(--space-small))
         repeat(12, 1fr)
         max(calc(50vw - (var(--max-width) / 2)), var(--space-small));
-      gap: var(--space-small);
+      gap: var(--space-medium);
       overflow-x: hidden;
 
       .assistantBackground {

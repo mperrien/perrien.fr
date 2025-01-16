@@ -1,10 +1,9 @@
 ---
 import { Image } from "astro:assets";
 
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/DefaultLayout.astro";
 
 import TechnologyTag from "@/components/ui/TechnologyTag.astro";
-import LetsChat from "@/components/ui/LetsChat.astro";
 
 import Andres from "@/assets/images/bluelimes/andres.webp";
 import Bubbles from "@/assets/images/bluelimes/bubbles.webp";
@@ -22,7 +21,7 @@ const tags: string[] = ["Personal Project", "Chart.js", "Vue.js"];
 
 <Layout
   title="Charts and Widgets"
-  description="The Reliably Assistant is an AI-powered "
+  description="Charts and widgets designed for a personal, unreleased, project."
 >
   <main class="page chartswidgets">
     <header class="chartswidgetsHeader">
@@ -78,7 +77,6 @@ const tags: string[] = ["Personal Project", "Chart.js", "Vue.js"];
         <Image src={Visitors} alt="" />
       </li>
     </ul>
-    <LetsChat />
   </main>
 
   <style lang="scss">
@@ -88,7 +86,7 @@ const tags: string[] = ["Personal Project", "Chart.js", "Vue.js"];
         max(calc(50vw - (var(--max-width) / 2)), var(--space-small))
         repeat(12, 1fr)
         max(calc(50vw - (var(--max-width) / 2)), var(--space-small));
-      gap: var(--space-small);
+      gap: var(--space-medium);
       overflow-x: hidden;
 
       .chartswidgetsHeader {

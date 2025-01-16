@@ -86,8 +86,15 @@ const tags: string[] = ["Personal Project", "Chart.js", "Vue.js"];
         max(calc(50vw - (var(--max-width) / 2)), var(--space-small))
         repeat(12, 1fr)
         max(calc(50vw - (var(--max-width) / 2)), var(--space-small));
-      gap: var(--space-medium);
       overflow-x: hidden;
+
+      @media (min-width: 54rem) {
+        gap: var(--space-small);
+      }
+
+      @media (min-width: 72rem) {
+        gap: var(--space-medium);
+      }
 
       .chartswidgetsHeader {
         grid-column: 1 / span 14;
@@ -97,7 +104,7 @@ const tags: string[] = ["Personal Project", "Chart.js", "Vue.js"];
 
         background-color: #222841;
         background-image: linear-gradient(
-          to bottom,
+          to right,
           #191c2c,
           #1d2438 20%,
           #222841 50%,
@@ -105,10 +112,28 @@ const tags: string[] = ["Personal Project", "Chart.js", "Vue.js"];
           #191c2c
         );
 
+        @media (min-width: 54rem) {
+          background-image: linear-gradient(
+            to bottom,
+            #191c2c,
+            #1d2438 20%,
+            #222841 50%,
+            #1d2438 80%,
+            #191c2c
+          );
+        }
+
         &__content {
-          grid-column: 2 / span 6;
+          grid-column: 2 / span 12;
 
           align-content: center;
+          margin-bottom: var(--space-medium);
+
+          @media (min-width: 54rem) {
+            grid-column: 2 / span 6;
+
+            margin-bottom: 0;
+          }
         }
 
         h1 {
@@ -134,9 +159,13 @@ const tags: string[] = ["Personal Project", "Chart.js", "Vue.js"];
         }
 
         img {
-          grid-column: 8 / 15;
+          grid-column: 1 / 15;
 
           height: auto;
+
+          @media (min-width: 54rem) {
+            grid-column: 8 / 15;
+          }
         }
       }
 
@@ -151,9 +180,11 @@ const tags: string[] = ["Personal Project", "Chart.js", "Vue.js"];
         margin-bottom: var(--space-large);
 
         li {
-          grid-column-end: span 2;
+          grid-column-end: span 12;
 
-          // overflow: hidden;
+          // @media (min-width: 54rem) {
+          //   grid-column-end: span 2;
+          // }
 
           img {
             display: block;
@@ -161,26 +192,46 @@ const tags: string[] = ["Personal Project", "Chart.js", "Vue.js"];
             width: 100%;
             object-fit: contain;
 
-            border-radius: var(--border-radius-xl);
+            border-radius: var(--border-radius-l);
             box-shadow: var(--box-shadow-diffuse);
+
+            // @media (min-width: 54rem) {
+            //   border-radius: var(--border-radius-xl);
+            // }
           }
         }
 
-        .bubbles,
-        .embarcadero {
+        .revenue,
+        .transactions,
+        .logistics,
+        .tickets {
           grid-column-end: span 6;
-          grid-row-end: span 2;
         }
 
-        .andres,
-        .polar,
-        .transactions-breakdown {
-          grid-column-end: span 4;
-          grid-row-end: span 2;
-        }
+        @media (min-width: 54rem) {
+          .revenue,
+          .transactions,
+          .logistics,
+          .tickets {
+            grid-column-end: span 2;
+          }
 
-        .visitors {
-          grid-column-end: span 4;
+          .bubbles,
+          .embarcadero {
+            grid-column-end: span 6;
+            grid-row-end: span 2;
+          }
+
+          .andres,
+          .polar,
+          .transactions-breakdown {
+            grid-column-end: span 4;
+            grid-row-end: span 2;
+          }
+
+          .visitors {
+            grid-column-end: span 4;
+          }
         }
       }
     }

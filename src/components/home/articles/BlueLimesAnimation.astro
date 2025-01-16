@@ -1,15 +1,9 @@
 ---
-import { Image } from "astro:assets";
-import background from "@/assets/images/home/xinyi-wen-qjCHPZbeXCQ-unsplash.jpg";
-
 import ArticleLink from "@/components/ui/ArticleLink.astro";
 import VideoContainer from "@/components/ui/VideoContainer.astro";
 ---
 
 <article class="homeCard homeCard--hasVideo">
-  <div class="background">
-    <Image src={background} alt="" />
-  </div>
   <div class="content">
     <VideoContainer
       src="/assets/video/bluelimes-animate.mp4"
@@ -26,19 +20,24 @@ import VideoContainer from "@/components/ui/VideoContainer.astro";
 
 <style lang="scss">
   article {
-    .background {
-      position: absolute;
-      height: 100%;
-      width: 100%;
+    container-type: inline-size;
 
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-      }
-    }
+    background: #ec7e8f url("assets/images/xinyi-wen-qjCHPZbeXCQ-unsplash.jpg")
+      no-repeat center center / cover;
 
     .content {
+      padding: var(--space-small);
+    }
+  }
+
+  @container (width > 400px) {
+    .homeCard .content {
+      padding: var(--space-medium);
+    }
+  }
+
+  @container (width > 560px) {
+    .homeCard .content {
       padding: var(--space-large);
     }
   }

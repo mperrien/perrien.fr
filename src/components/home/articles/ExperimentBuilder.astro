@@ -1,15 +1,9 @@
 ---
-import { Image } from "astro:assets";
-import background from "@/assets/images/home/milad-fakurian-PGdW_bHDbpI-unsplash.jpg";
-
 import ArticleLink from "@/components/ui/ArticleLink.astro";
 import VideoContainer from "@/components/ui/VideoContainer.astro";
 ---
 
-<article class="homeCard homeCard--hasVideo">
-  <div class="background">
-    <Image src={background} alt="" />
-  </div>
+<div class="post homeCard">
   <div class="content">
     <VideoContainer
       src="/assets/video/experiment-builder-1.webm"
@@ -22,26 +16,29 @@ import VideoContainer from "@/components/ui/VideoContainer.astro";
     />
   </div>
   <ArticleLink href="/experiment-builder/" />
-</article>
+</div>
 
 <style lang="scss">
-  article {
-    // display:;
-    // place-content: center;
+  .post {
+    container-type: inline-size;
 
-    .background {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-      }
-    }
+    background: #b7c8d9
+      url("assets/images/milad-fakurian-PGdW_bHDbpI-unsplash.jpg") no-repeat
+      center center / cover;
 
     .content {
+      padding: var(--space-small);
+    }
+  }
+
+  @container (width > 400px) {
+    .homeCard .content {
+      padding: var(--space-medium);
+    }
+  }
+
+  @container (width > 560px) {
+    .homeCard .content {
       padding: var(--space-large);
     }
   }

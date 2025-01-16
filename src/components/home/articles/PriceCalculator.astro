@@ -1,15 +1,8 @@
 ---
-import { Image } from "astro:assets";
-import background from "@/assets/images/home/sebastian-svenson-LpbyDENbQQg-unsplash.jpg";
-
-import ArticleLink from "@/components/ui/ArticleLink.astro";
 import VideoContainer from "@/components/ui/VideoContainer.astro";
 ---
 
 <article class="homeCard homeCard--hasVideo">
-  <div class="background">
-    <Image src={background} alt="" />
-  </div>
   <div class="content">
     <VideoContainer
       src="/assets/video/price-calculator.mov"
@@ -25,21 +18,25 @@ import VideoContainer from "@/components/ui/VideoContainer.astro";
 
 <style lang="scss">
   article {
-    .background {
-      position: absolute;
-      height: 100%;
-      width: 100%;
+    container-type: inline-size;
 
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-      }
-    }
+    background: #c8bcba
+      url("/assets/images/sebastian-svenson-LpbyDENbQQg-unsplash.jpg") no-repeat
+      center center / cover;
 
     .content {
-      // z-index: 2;
+      padding: var(--space-small);
+    }
+  }
 
+  @container (width > 400px) {
+    .homeCard .content {
+      padding: var(--space-medium);
+    }
+  }
+
+  @container (width > 560px) {
+    .homeCard .content {
       padding: var(--space-large);
     }
   }

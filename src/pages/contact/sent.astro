@@ -1,5 +1,7 @@
 ---
 import Layout from "@/layouts/FullPageLayout.astro";
+
+import "@/styles/pages/_contact.scss";
 ---
 
 <Layout title="Your message has been sent" description="Send me a message">
@@ -19,75 +21,3 @@ import Layout from "@/layouts/FullPageLayout.astro";
     </div>
   </main>
 </Layout>
-
-<style lang="scss">
-  .contact {
-    display: grid;
-    grid-template-columns:
-      max(calc(50vw - (var(--max-width) / 2)), var(--space-small))
-      repeat(12, 1fr)
-      max(calc(50vw - (var(--max-width) / 2)), var(--space-small));
-    gap: var(--space-medium);
-    overflow-x: hidden;
-
-    background-color: var(--text-color-bright);
-
-    color: white;
-
-    &__header {
-      grid-column: 2 / span 6;
-
-      min-height: 100vh;
-      padding-top: var(--space-small);
-
-      .siteLogo {
-        display: flex;
-        align-items: baseline;
-        gap: 0.2rem;
-
-        color: var(--white);
-        font-family: var(--body-font);
-        font-size: 1.6rem;
-        font-weight: 600;
-
-        @media (min-width: 32rem) {
-          font-size: 3rem;
-        }
-
-        &:hover {
-          text-decoration: none;
-        }
-
-        &::after {
-          content: "";
-
-          display: block;
-          height: 1.2rem;
-          width: 1.2rem;
-
-          background: var(--orange);
-          border-radius: 50%;
-        }
-      }
-
-      h1 {
-        font-family: var(--body-font);
-        font-size: clamp(7.2rem, 14vw, 20rem);
-        font-weight: 900;
-      }
-    }
-
-    &__content {
-      grid-column: 8 / span 6;
-
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-
-      h2 {
-        color: white;
-        font-family: var(--body-font);
-      }
-    }
-  }
-</style>

@@ -1,3 +1,22 @@
+// Default accessibility styles for class-less buttons
+// button:focus-visible,
+// [type="button"]:focus-visible,
+// [type="reset"]:focus-visible,
+// [type="submit"]:focus-visible {
+//   outline: 0.2rem dotted var(--orange);
+//   outline-offset: 0.2rem;
+// }
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  &:not([class]):focus-visible {
+    outline: 0.2rem dotted var(--orange);
+    outline-offset: 0.2rem;
+  }
+}
+
 .button {
   display: inline-block;
   padding: 0.8rem 1.6rem;
@@ -38,6 +57,11 @@
       background-color: var(--orange-bright);
 
       color: white;
+    }
+
+    &:focus-visible {
+      outline: 0.2rem solid var(--orange);
+      outline-offset: 0.2rem;
     }
   }
 

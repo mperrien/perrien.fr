@@ -12,6 +12,8 @@ export default defineConfig({
     icon({
       iconDir: "src/assets/icons",
     }),
-    sitemap(),
+    sitemap({
+      filter: (page) => page !== "https://perrien.fr/contact/sent/",
+    }),
   ],
 });

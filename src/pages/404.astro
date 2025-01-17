@@ -1,0 +1,31 @@
+---
+import Layout from "@/layouts/FullPageLayout.astro";
+
+import "@/styles/pages/_error.scss";
+---
+
+<Layout title="Error 404" description="This page does not exist.">
+  <main class="page page--full error">
+    <header class="error__header">
+      <a href="/" class="siteLogo">
+        <div>Marc</div>
+      </a>
+      <h1>404</h1>
+    </header>
+    <div class="error__content">
+      <div>
+        <p>This page does not exist.</p>
+        <p>
+          Well, <em>this</em> page exists, obviously. But the one you're looking
+          for doesn't.
+        </p>
+        <p>
+          <a href="/">Go back to homepage</a> or <a
+            href="/contact/"
+            class="button button--primary">Send me a message</a
+          >
+        </p>
+      </div>
+    </div>
+  </main>
+</Layout>

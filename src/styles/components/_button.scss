@@ -1,3 +1,14 @@
+// Default accessibility styles for class-less buttons
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  &:not([class]):focus-visible {
+    outline: 0.2rem dotted var(--orange);
+    outline-offset: 0.2rem;
+  }
+}
+
 .button {
   display: inline-block;
   padding: 0.8rem 1.6rem;
@@ -22,11 +33,6 @@
 
   &--primary {
     background-color: var(--orange);
-    // box-shadow:
-    //   0 0.1rem 0.3rem hsla(var(--orange-base), 0.1),
-    //   0 0.2rem 0.4rem hsla(var(--orange-base), 0.2),
-    //   0 0.8rem 0.8rem hsla(var(--orange-base), 0.4),
-    //   0 0.8rem 2.4rem hsla(var(--orange-base), 0.5);
 
     color: white;
 
@@ -39,37 +45,12 @@
 
       color: white;
     }
+
+    &:focus-visible {
+      outline: 0.2rem solid var(--orange);
+      outline-offset: 0.2rem;
+    }
   }
-
-  // &--secondary {
-  //   background-color: var(--blue-500);
-  //   box-shadow:
-  //     0 0.1rem 0.3rem hsla(var(--blue-base), 0.025),
-  //     0 0.2rem 0.4rem hsla(var(--blue-base), 0.05),
-  //     0 0.8rem 0.8rem hsla(var(--blue-base), 0.08),
-  //     0 0.8rem 2.4rem hsla(var(--blue-base), 0.1);
-
-  //   color: white;
-
-  //   &:hover {
-  //     background-color: var(--blue-700);
-  //   }
-  // }
-
-  // &--tertiary {
-  //   background-color: var(--green-500);
-  //   box-shadow:
-  //     0 0.1rem 0.3rem hsla(var(--green-base), 0.025),
-  //     0 0.2rem 0.4rem hsla(var(--green-base), 0.05),
-  //     0 0.8rem 0.8rem hsla(var(--green-base), 0.08),
-  //     0 0.8rem 2.4rem hsla(var(--green-base), 0.1);
-
-  //   color: var(--grey-100);
-
-  //   &:hover {
-  //     background-color: var(--green-700);
-  //   }
-  // }
 
   &--icon {
     position: relative;

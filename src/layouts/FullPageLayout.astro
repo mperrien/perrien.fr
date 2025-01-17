@@ -13,7 +13,7 @@ interface Props {
 const { title, description, image } = Astro.props;
 let canonical = new URL(Astro.url.pathname, Astro.site);
 const img = new URL(
-  Astro.props.image || "https://bluelimes.dev/social.png",
+  Astro.props.image || "https://perrien.fr/marc-perrien.jpg",
   Astro.site,
 );
 ---
@@ -98,6 +98,7 @@ const img = new URL(
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={img} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body>
     <slot />

@@ -1,1 +1,5 @@
+User-agent: *
+
 Disallow: /contact/sent$
+
+Sitemap: https://perrien.fr/sitemap-index.xml

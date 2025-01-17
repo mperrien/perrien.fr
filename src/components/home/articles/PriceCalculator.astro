@@ -1,0 +1,43 @@
+---
+import VideoContainer from "@/components/ui/VideoContainer.astro";
+---
+
+<article class="homeCard homeCard--hasVideo">
+  <div class="content">
+    <VideoContainer
+      src="/assets/video/price-calculator.mov"
+      poster="/assets/images/price-calculator.webp"
+      alt="A price calculator displays various prices depending on user-selected options."
+      height="760"
+      width="968"
+      shadow={true}
+      rounded={true}
+    />
+  </div>
+</article>
+
+<style lang="scss">
+  article {
+    container-type: inline-size;
+
+    background: #c8bcba
+      url("/assets/images/sebastian-svenson-LpbyDENbQQg-unsplash.jpg") no-repeat
+      center center / cover;
+
+    .content {
+      padding: var(--space-small);
+    }
+  }
+
+  @container (width > 400px) {
+    .homeCard .content {
+      padding: var(--space-medium);
+    }
+  }
+
+  @container (width > 560px) {
+    .homeCard .content {
+      padding: var(--space-large);
+    }
+  }
+</style>

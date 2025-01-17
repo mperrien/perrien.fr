@@ -1,0 +1,177 @@
+---
+import { Image } from "astro:assets";
+
+import Layout from "@/layouts/DefaultLayout.astro";
+
+import PageHeader from "@/components/ui/PageHeader.astro";
+import VideoContainer from "@/components/ui/VideoContainer.astro";
+
+import Activity from "@/assets/images/builder/reliably-activity-2.png";
+---
+
+<Layout
+  title="Reliably Experiment Builder"
+  description="I designed and built an Experiment Builder, allowing users to create chaos engineering experiments with GUI, as an alternative to JSON files."
+>
+  <main class="page">
+    <PageHeader
+      title="Reliably Experiment Builder"
+      tags={["Vue.js", "TypeScript", "Design"]}
+      text="Reliably is a SaaS product that helps users gain a better understanding of complex systems by running experiments. Those experiments are written using the JSON format defined by the open-source Chaos Toolkit. To make creating experiments more approachable, we created a graphical builder that lets users add, configure, and reorder, the various activities that form an experiment."
+      bgcolor="#daf1c2"
+      decorate={true}
+    >
+      <Image
+        src={Activity}
+        alt="A Reliably action targeting AWS EC2. The action is named attach_volume, and its description reads 'Attaches a previously detached EBS volume to its associated ECS instance'."
+      />
+    </PageHeader>
+    <div class="experimentBuilder">
+      <section>
+        <VideoContainer
+          src="/assets/video/experiment-builder-1.webm"
+          poster="/assets/video/experiment-builder-1.webp"
+          alt="Browsing the experiment activities."
+          height="720"
+          width="1176"
+          shadow={true}
+          rounded={true}
+        />
+        <div>
+          <h2>Display and filter activities</h2>
+          <p>
+            The list of over 200 activities (the building blocks of experiments)
+            is
+            <strong>statically generated</strong>, and <strong
+              >filtered client-side</strong
+            >.
+          </p>
+          <p>
+            Not needing additional API calls makes the interface feel <strong
+              >responsive and fast</strong
+            >.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <h2>Recommended activities and parameters input</h2>
+          <p>
+            When a user selects a first action, he is taken to the builder
+            itself. If applicable, a modal windows presents recommended
+            activities, that are often played in conjonction with the first one.
+          </p>
+          <p>
+            Once the builder is displayed, <strong
+              >each action can be configured</strong
+            >
+            (setting parameters, such as targets or thresholds), and more activities
+            can be added to the experiment.
+          </p>
+        </div>
+        <VideoContainer
+          src="/assets/video/experiment-builder-2.webm"
+          poster="/assets/video/experiment-builder-2.webp"
+          alt="The Reliably assistant suggests activities related to the ones you're using."
+          height="720"
+          width="1176"
+          shadow={true}
+          rounded={true}
+        />
+      </section>
+
+      <section>
+        <VideoContainer
+          src="/assets/video/experiment-builder-3.webm"
+          poster="/assets/video/experiment-builder-3.webp"
+          alt="Video of activities being reorder with drag and drop."
+          height="720"
+          width="2384"
+          shadow={true}
+          rounded={true}
+        />
+        <div>
+          <h2>Drag to rearrange</h2>
+          <p>
+            Order matters a lot in experiments. <strong
+              >Activities can dragged across sections and reordered</strong
+            >.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <h2>Fine settings</h2>
+          <p>
+            Users also have access to additional settings for each experiment
+            section. One important goal of the builder was to keep all of the
+            many settings that are available when writing an experiment JSON
+            file, so we would <strong
+              >not sacrifice configurability for user-friendliness</strong
+            >.
+          </p>
+        </div>
+        <VideoContainer
+          src="/assets/video/experiment-builder-4.webm"
+          poster="/assets/video/experiment-builder-4.webp"
+          alt="Choosing the verification block settings"
+          height="720"
+          width="820"
+          shadow={true}
+          rounded={true}
+        />
+      </section>
+    </div>
+  </main>
+
+  <style lang="scss">
+    .page {
+      display: grid;
+      grid-template-columns:
+        max(calc(50vw - (var(--max-width) / 2)), var(--space-small))
+        repeat(12, 1fr)
+        max(calc(50vw - (var(--max-width) / 2)), var(--space-small));
+
+      @media (min-width: 54rem) {
+        gap: var(--space-small);
+      }
+
+      @media (min-width: 72rem) {
+        gap: var(--space-medium);
+      }
+
+      .experimentBuilder {
+        grid-column: 2 / span 12;
+
+        > section + section {
+          margin-top: calc(2 * var(--space-large));
+        }
+
+        > section {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+          gap: var(--space-medium);
+
+          > div {
+            align-self: center;
+          }
+
+          h2 {
+            font-family: var(--body-font);
+            font-size: 2.4rem;
+          }
+
+          p {
+            font-size: 1.8rem;
+
+            @media (min-width: 54rem) {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+    }
+  </style>
+</Layout>

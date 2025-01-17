@@ -1,0 +1,46 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  name: string;
+}
+
+const props = Astro.props;
+---
+
+<span
+  class="technologyTag"
+  class:list={[{ isPersonal: props.name === "Personal Project" }]}
+>
+  {props.name === "Vue.js" && <Icon name="vuejs" />}
+  {props.name === "TypeScript" && <Icon name="typescript" />}
+  {props.name === "JavaScript" && <Icon name="javascript" />}
+  {props.name === "HTML" && <Icon name="html5" />}
+  {props.name === "CSS" && <Icon name="css" />}
+  {props.name === "Chart.js" && <Icon name="chartjs" />}
+  {props.name}
+</span>
+
+<style lang="scss">
+  .technologyTag {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.6rem;
+
+    background-color: var(--grey-200);
+    border-radius: var(--border-radius-m);
+    box-shadow: var(--box-shadow-sharp);
+
+    &.isPersonal {
+      background-color: var(--orange);
+
+      color: white;
+    }
+
+    svg {
+      height: 2rem;
+      width: auto;
+    }
+  }
+</style>

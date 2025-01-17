@@ -1,0 +1,123 @@
+---
+import TechnologyTag from "@/components/ui/TechnologyTag.astro";
+
+export interface Props {
+  title: string;
+  tags: string[];
+  text?: string;
+  color?: string;
+  bgcolor?: string;
+  decorate?: boolean;
+}
+
+const props = Astro.props;
+const textColor = props.color ? props.color : "hsl(240, 3.7%, 15.88%)";
+const backgroundColor = props.bgcolor ? props.bgcolor : "transparent";
+---
+
+<header class="pageHeader">
+  <div class="pageHeader__content">
+    <h1>{props.title}</h1>
+    {
+      props.tags.length > 0 && (
+        <ul class="pageHeader__tags list-reset">
+          {props.tags.map((tag) => (
+            <li>
+              <TechnologyTag name={tag} />
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    {props.text && <p class="pageHeader__text">{props.text}</p>}
+  </div>
+  <div
+    class:list={[
+      "pageHeader__illustration",
+      { "pageHeader__illustration--decorate": props.decorate === true },
+    ]}
+  >
+    <slot />
+  </div>
+</header>
+
+<style lang="scss" define:vars={{ textColor, backgroundColor }}>
+  .pageHeader {
+    grid-column: 1 / span 14;
+
+    display: grid;
+    grid-template-columns: subgrid;
+    margin-bottom: var(--space-large);
+    padding-bottom: var(--space-large);
+
+    background-color: var(--backgroundColor);
+
+    @media (min-width: 54rem) {
+      padding-top: var(--space-large);
+    }
+
+    &__content {
+      grid-column: 2 / span 12;
+
+      margin-bottom: var(--space-large);
+
+      color: var(--textColor);
+
+      @media (min-width: 54rem) {
+        grid-column: 2 / span 6;
+      }
+
+      h1 {
+        margin-top: var(--space-large);
+
+        font-family: var(--body-font);
+      }
+    }
+
+    &__tags {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: var(--space-small);
+    }
+
+    &__text {
+      margin-top: var(--space-medium);
+
+      font-size: 1.8rem;
+      line-height: 1.5;
+      max-width: 66ch;
+
+      @media (min-width: 54rem) {
+        font-size: 2.4rem;
+      }
+    }
+
+    &__illustration {
+      grid-column: 2 / span 12;
+
+      display: grid;
+      align-items: center;
+      justify-items: center;
+
+      @media (min-width: 54rem) {
+        grid-column: 8 / span 6;
+
+        justify-items: end;
+      }
+
+      :global(img) {
+        display: block;
+        height: auto;
+        max-width: 90%;
+      }
+
+      &--decorate {
+        :global(img) {
+          border-radius: var(--border-radius-l);
+          box-shadow: var(--box-shadow-diffuse);
+        }
+      }
+    }
+  }
+</style>

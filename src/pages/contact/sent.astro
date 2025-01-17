@@ -1,0 +1,23 @@
+---
+import Layout from "@/layouts/FullPageLayout.astro";
+
+import "@/styles/pages/_contact.scss";
+---
+
+<Layout title="Your message has been sent" description="Send me a message">
+  <main class="page page--full contact">
+    <header class="contact__header">
+      <a href="/" class="siteLogo">
+        <div>Marc</div>
+      </a>
+      <h1>Let's get in touch</h1>
+    </header>
+    <div class="contact__content">
+      <div>
+        <h2>Thank you!</h2>
+        <p>Your message has been sent.</p>
+        <p><a href="/" class="button button--primary">Back to home page</a></p>
+      </div>
+    </div>
+  </main>
+</Layout>

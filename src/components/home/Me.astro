@@ -1,48 +1,70 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
 <header class="me">
   <h1>Hello,<br /> I'm Marc Perrien</h1>
   <p>I design and build user interfaces.</p>
-  <div class="me__languages">
-    <ul class="list-reset">
-      <li>JavaScript</li>
-      <li>TypeScript</li>
-      <li>Vue.js</li>
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>Astro</li>
-    </ul>
-  </div>
+
   <div class="me__actions">
     <ul class="list-reset">
-      <li><a href="/contact/">Hire Me</a></li>
+      <li><a class="button button--primary" href="/contact/">Hire Me</a></li>
       <li>
-        <a href="https://github.com/mperrien">
+        <a
+          class="button button--icon"
+          href="https://github.com/mperrien"
+          title="GitHub profile"
+          aria-label="GitHub profile"
+        >
           <span class="screen-reader-text">GitHub profile</span>
-          GitHub Icon
+          <Icon name="feather/github" />
         </a>
       </li>
       <li>
-        <a href="https://codepen.io/mperrien">
+        <a
+          class="button button--icon"
+          href="https://codepen.io/mperrien"
+          title="Codepen profile"
+          aria-label="Codepen profile"
+        >
           <span class="screen-reader-text">Codepen profile</span>
-          Codepen Icon
+          <Icon name="feather/codepen" />
         </a>
       </li>
       <li>
-        <a href="https://linkedin.com">
+        <a
+          class="button button--icon"
+          href="https://www.linkedin.com/in/marc-perrien-a458a117/"
+          title="LinkedIn profile"
+          aria-label="LinkedIn profile"
+        >
           <span class="screen-reader-text">LinkedIn profile</span>
-          LinkedIn Icon
+          <Icon name="feather/linkedin" />
         </a>
       </li>
       <li>
         <details>
-          <summary>
+          <summary
+            class="button button--icon"
+            title="Download my resume"
+            aria-label="Download my resume"
+          >
             <span class="screen-reader-text">Download my resume</span>
-            Download Icon
+            <Icon name="feather/download" />
           </summary>
           <ul class="list-reset">
             <li>
-              <a href="/assets/marc-perrien-resume.pdf">English Resume</a>
+              <a href="/assets/marc-perrien-resume.pdf">
+                <Icon name="united-kingdom-flag-icon" size="20" />
+                English Resume
+              </a>
             </li>
-            <li><a href="/assets/marc-perrien-cv.pdf">CV en français</a></li>
+            <li>
+              <a href="/assets/marc-perrien-cv.pdf">
+                <Icon name="france-flag-icon" size="20" />
+                CV en français
+              </a>
+            </li>
           </ul>
         </details>
       </li>
@@ -50,15 +72,97 @@
   </div>
 </header>
 
+<script>
+  var details = [...document.querySelectorAll("details")];
+  document.addEventListener("click", function (e) {
+    if (!details.some((d) => d.contains(e.target as Node))) {
+      details.forEach((d) => d.removeAttribute("open"));
+    } else {
+      details.forEach((d) =>
+        !d.contains(e.target as Node) ? d.removeAttribute("open") : "",
+      );
+    }
+  });
+</script>
+
 <style lang="scss">
   .me {
     grid-column-start: 2;
-    grid-column-end: 9;
+    grid-column-end: 14;
+
+    display: flex;
+    flex-direction: column;
 
     border-top: 0.1rem solid var(--grey-200);
 
+    @media (min-width: 60rem) {
+      grid-column-start: 2;
+      grid-column-end: 9;
+    }
+
     h1 {
       font-family: var(--display-font);
+    }
+
+    &__actions {
+      margin-top: var(--space-large);
+      margin-bottom: var(--space-large);
+
+      @media (min-width: 60rem) {
+        margin-top: auto;
+      }
+
+      > ul {
+        display: flex;
+        gap: var(--space-small);
+
+        details {
+          position: relative;
+
+          &[open] {
+            summary {
+              background-color: white;
+            }
+          }
+
+          summary {
+            list-style-type: none;
+          }
+
+          > ul {
+            position: absolute;
+            top: 50%;
+            left: calc(100% + 0.6rem);
+            overflow: hidden;
+
+            background-color: var(--grey-100);
+            border: 0.1rem solid var(--grey-200);
+            border-radius: var(--border-radius-s);
+            box-shadow: var(--box-shadow-diffuse);
+
+            transform: translateY(-50%);
+
+            > li {
+              font-size: 1.6rem;
+              white-space: nowrap;
+
+              a {
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                padding: 0.6rem 1rem;
+                width: 100%;
+
+                &:hover {
+                  background-color: var(--grey-200);
+
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 </style>

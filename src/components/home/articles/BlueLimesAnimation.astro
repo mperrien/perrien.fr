@@ -1,0 +1,44 @@
+---
+import ArticleLink from "@/components/ui/ArticleLink.astro";
+import VideoContainer from "@/components/ui/VideoContainer.astro";
+---
+
+<article class="homeCard homeCard--hasVideo">
+  <div class="content">
+    <VideoContainer
+      src="/assets/video/bluelimes-animate.mp4"
+      poster="/assets/images/blue-limes-animation.webp"
+      alt="Tetris-like blocks move depending on the mouse cursor position. They snap in place when the cursor hovers a call-to-action button."
+      height="1080"
+      width="1664"
+      shadow={true}
+      rounded={true}
+    />
+  </div>
+  <ArticleLink href="/blue-limes-animation/" />
+</article>
+
+<style lang="scss">
+  article {
+    container-type: inline-size;
+
+    background: #ec7e8f url("assets/images/xinyi-wen-qjCHPZbeXCQ-unsplash.jpg")
+      no-repeat center center / cover;
+
+    .content {
+      padding: var(--space-small);
+    }
+  }
+
+  @container (width > 400px) {
+    .homeCard .content {
+      padding: var(--space-medium);
+    }
+  }
+
+  @container (width > 560px) {
+    .homeCard .content {
+      padding: var(--space-large);
+    }
+  }
+</style>

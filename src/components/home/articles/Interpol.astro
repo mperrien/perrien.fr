@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import Poster from "@/assets/images/home/interpol.webp";
+
+import ArticleLink from "@/components/ui/ArticleLink.astro";
+---
+
+<article class="homeCard">
+  <div class="homeCard__content">
+    <h2 class="text-center">
+      Interpol Poster
+      <div class="homeCard__label">Personal Project</div>
+    </h2>
+  </div>
+  <Image
+    src={Poster}
+    alt="A poster for a concert of the band Interpol. It is mostly made of horizontal red lines and skewed black lines."
+  />
+  <ArticleLink href="https://codepen.io/mperrien/pen/rNReRXJ" />
+</article>
+
+<style lang="scss">
+  article {
+    background-color: var(--grey-200);
+
+    h2 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-small);
+      margin-top: var(--space-large);
+      margin-bottom: var(--space-medium);
+    }
+
+    img {
+      display: block;
+      height: auto;
+      width: 70%;
+      margin: 0 auto;
+
+      box-shadow: var(--box-shadow-diffuse);
+    }
+  }
+</style>

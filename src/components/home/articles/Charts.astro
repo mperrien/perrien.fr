@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import Bubbles from "@/assets/images/bluelimes/bubbles.webp";
+
+import ArticleLink from "@/components/ui/ArticleLink.astro";
+---
+
+<article class="homeCard">
+  <Image
+    src={Bubbles}
+    alt="A bubble chart with yellow bubbles on a pink background."
+  />
+  <ArticleLink href="/charts-widgets/" />
+</article>
+
+<style lang="scss">
+  article {
+    img {
+      display: block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+</style>

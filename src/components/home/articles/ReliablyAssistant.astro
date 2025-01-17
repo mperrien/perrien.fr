@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import background from "@/assets/images/home/reliably-assistant-social.webp";
+
+import ArticleLink from "@/components/ui/ArticleLink.astro";
+---
+
+<article class="homeCard homeCard--hasvideo">
+  <Image
+    src={background}
+    alt='The text "Reliably Assistant" written over a dark blue, pink, and dark purle, sci-fi looking night sky.'
+  />
+  <ArticleLink href="/reliably-assistant/" />
+</article>
+
+<style lang="scss">
+  article {
+    img {
+      display: block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+</style>

@@ -1,0 +1,145 @@
+---
+import { Code } from "astro:components";
+import { Image } from "astro:assets";
+import BlueLimes from "../assets/images/blue-limes-logo.webp";
+import Animate from "../assets/images/bluelimes/blue-limes-animate.webp";
+
+import Layout from "@/layouts/DefaultLayout.astro";
+
+import PageHeader from "@/components/ui/PageHeader.astro";
+import VideoContainer from "@/components/ui/VideoContainer.astro";
+
+const animationjs = `function calculateDistance(elem, mouseX, mouseY) {
+  let a = mouseX - (elem.offsetLeft + elem.offsetWidth / 2);
+  let b = mouseY - 94 - (elem.offsetTop + elem.offsetHeight / 2);
+  return Math.floor(Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)));
+}
+
+window.addEventListener("DOMContentLoaded", (event) => {
+  const target = document.getElementById("solutionButton");
+  const brickA = document.querySelectorAll(".js-cube-a");
+  const brickB = document.querySelectorAll(".js-cube-b");
+  const brickC = document.querySelectorAll(".js-cube-c");
+  const brickD = document.querySelectorAll(".js-cube-d");
+
+  document.addEventListener("mousemove", function (e) {
+    mX = e.pageX;
+    mY = e.pageY;
+    distance = calculateDistance(target, mX, mY);
+    if (distance < 20) {
+      distance = 0;
+    }
+
+    brickA.forEach((e) => {
+      e.style.transform = \`translate(\${-0.3 * distance}px, \${0.2 * distance}px)\`;
+    });
+
+    brickB.forEach((e) => {
+      e.style.transform = \`translate(\${-0.1 * distance}px, \${-0.5 * distance}px)\`;
+    });
+
+    brickC.forEach((e) => {
+      e.style.transform = \`translate(\${0.3 * distance}px, \${-0.2 * distance}px)\`;
+    });
+
+    brickD.forEach((e) => {
+      e.style.transform = \`translate(\${0.2 * distance}px, \${0.2 * distance}px)\`;
+    });
+  });
+});`;
+---
+
+<Layout
+  title="Animation for Blue Limes"
+  description="A small animation where Tetris-like blocks move with the mouse cursor. To assemble them, the user has to direct their cursor over the call-to-action button."
+>
+  <main class="page">
+    <PageHeader
+      title="A 'nudge-y' animation for Blue Limes"
+      tags={["JavaScript", "CSS", "Design"]}
+      bgcolor="#ff9df4"
+    >
+      <Image
+        src={Animate}
+        alt="Tetris blocks can be gathered to form a new rectangle shape."
+      />
+    </PageHeader>
+    <div class="bluelimesAnimation">
+      <div class="video">
+        <VideoContainer
+          src="/assets/video/bluelimes-animate.mp4"
+          poster="/assets/images/blue-limes-animation.webp"
+          alt="Tetris-like blocks moving closer and then further apart, in a loop."
+          height="1080"
+          width="1664"
+          shadow={true}
+          rounded={true}
+        />
+      </div>
+      <div class="content">
+        <p>
+          This simple animation re-uses the same Tetris-like shapes as the Blue
+          Limes logo.
+        </p>
+        <Image
+          src={BlueLimes}
+          alt="The Blue Limes logo looks like a heart, built by assembling two simple shapes made of smaller cubes."
+          height="95"
+        />
+        <p>
+          To assemble the bricks and have them snap to place, the user needs to
+          position their cursor over the call-to-action button.
+        </p>
+      </div>
+      <div class="code">
+        <Code code={animationjs} lang="js" />
+      </div>
+    </div>
+  </main>
+
+  <style lang="scss">
+    .page {
+      display: grid;
+      grid-template-columns:
+        max(calc(50vw - (var(--max-width) / 2)), var(--space-small))
+        repeat(12, 1fr)
+        max(calc(50vw - (var(--max-width) / 2)), var(--space-small));
+
+      @media (min-width: 54rem) {
+        gap: var(--space-small);
+      }
+
+      @media (min-width: 72rem) {
+        gap: var(--space-medium);
+      }
+
+      .bluelimesAnimation {
+        grid-column: 2 / span 12;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-medium);
+
+        .video {
+          width: 100%;
+          max-width: 72rem;
+        }
+
+        .content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: var(--space-large);
+          width: 100%;
+          max-width: 66ch;
+
+          > img {
+            margin-top: var(--space-medium);
+            margin-bottom: var(--space-medium);
+          }
+        }
+      }
+    }
+  </style>
+</Layout>

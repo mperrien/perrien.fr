@@ -1,0 +1,80 @@
+---
+import { Image } from "astro:assets";
+import Jazzmaster from "../../../assets/images/home/squier-jmascis-jazzmaster.webp";
+---
+
+<article class="homeCard">
+  <div class="homeCard__content">
+    <h2>don't ask me about my guitars</h2>
+  </div>
+  <Image
+    src={Jazzmaster}
+    alt="A close-up view of a Squier J Mascis Jazzmaster guitar. The guitar is white, but not bright white, more like an old, a bit passed, white, with a gold pickguard."
+  />
+</article>
+
+<style lang="scss">
+  article {
+    container-type: inline-size;
+
+    > div {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+
+      display: grid;
+      place-content: center;
+
+      opacity: 1;
+
+      h2 {
+        margin-bottom: 0;
+
+        color: white;
+        font-size: 6rem;
+      }
+    }
+
+    img {
+      display: block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    @media (hover: hover) {
+      article:hover {
+        > div {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  @container (width > 400px) {
+    article > div h2 {
+      font-size: 7rem;
+    }
+  }
+
+  @container (width > 460px) {
+    article > div h2 {
+      font-size: 8rem;
+    }
+  }
+
+  @container (width > 560px) {
+    article > div h2 {
+      font-size: 10rem;
+    }
+  }
+
+  @container (width > 720px) {
+    article > div h2 {
+      font-size: 12rem;
+    }
+  }
+</style>

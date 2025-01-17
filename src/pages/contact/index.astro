@@ -1,0 +1,41 @@
+---
+import Layout from "@/layouts/FullPageLayout.astro";
+
+import "@/styles/pages/_contact.scss";
+---
+
+<Layout title="Contact" description="Send me a message">
+  <main class="page page--full contact">
+    <header class="contact__header">
+      <a href="/" class="siteLogo">
+        <div>Marc</div>
+      </a>
+      <h1>Let's get in touch</h1>
+    </header>
+    <div class="contact__content">
+      <form class="form" name="contact" method="POST" data-netlify="true">
+        <p class="inputWrapper">
+          <label for="name">
+            Your Name <span class="required">Required</span>
+          </label>
+          <input type="text" name="name" id="name" required />
+        </p>
+        <p class="inputWrapper">
+          <label for="email">
+            Your Email <span class="required">Required</span>
+          </label>
+          <input type="email" name="email" id="email" />
+        </p>
+        <p class="inputWrapper">
+          <label for="message">
+            Message <span class="required">Required</span>
+          </label>
+          <textarea name="message" id="message" rows="5" required></textarea>
+        </p>
+        <p class="inputWrapper">
+          <button type="submit" class="button button--primary">Send</button>
+        </p>
+      </form>
+    </div>
+  </main>
+</Layout>

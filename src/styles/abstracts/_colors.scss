@@ -1,8 +1,10 @@
 :root {
-  --orange: hsl(18, 83%, 55%);
   --orange-base: 18, 83%, 55%;
+  --orange: hsl(18, 83%, 55%);
   --orange-dim: hsl(18, 75%, 66%);
   --orange-bright: hsl(18, 92%, 51%);
+
+  --purple: hsl(270, 83%, 55%);
 
   --grey-100: hsl(220, 27.27%, 97.84%);
   --grey-200: hsl(232.5, 22.22%, 92.94%);

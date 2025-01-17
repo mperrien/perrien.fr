@@ -1,0 +1,45 @@
+---
+import ArticleLink from "@/components/ui/ArticleLink.astro";
+import VideoContainer from "@/components/ui/VideoContainer.astro";
+---
+
+<div class="post homeCard">
+  <div class="content">
+    <VideoContainer
+      src="/assets/video/experiment-builder-1.webm"
+      poster="/assets/video/experiment-builder-1.webp"
+      alt="Browsing the experiment activities."
+      height="720"
+      width="1176"
+      shadow={true}
+      rounded={true}
+    />
+  </div>
+  <ArticleLink href="/experiment-builder/" />
+</div>
+
+<style lang="scss">
+  .post {
+    container-type: inline-size;
+
+    background: #b7c8d9
+      url("assets/images/milad-fakurian-PGdW_bHDbpI-unsplash.jpg") no-repeat
+      center center / cover;
+
+    .content {
+      padding: var(--space-small);
+    }
+  }
+
+  @container (width > 400px) {
+    .homeCard .content {
+      padding: var(--space-medium);
+    }
+  }
+
+  @container (width > 560px) {
+    .homeCard .content {
+      padding: var(--space-large);
+    }
+  }
+</style>

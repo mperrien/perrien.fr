@@ -187,15 +187,74 @@ import Stack3 from "@/assets/images/reliably/r-stack-3.webp";
     }
 
     .reliablyTitle {
+    }
+
+    .reliablyTitle {
       grid-column: 2 / span 12;
 
       margin-top: calc(-1 * var(--space-large));
 
-      font-family: var(--body-text);
+      font-family: var(--body-font);
       font-size: clamp(2.4rem, 1.2rem + 5vw, 12rem);
       font-weight: 900;
 
       transform: translateY(-50%);
+    }
+  }
+</style>
+
+<style>
+  /* 
+  these type the CSS variable as color
+  unlocking the ability for the browser 
+  to animate just that portion
+*/
+  @property --＠color-1 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: hsl(98 100% 62%);
+  }
+
+  @property --＠color-2 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: hsl(204 100% 59%);
+  }
+
+  /* keyframes that change the color variable */
+  @keyframes gradient-change {
+    to {
+      --＠color-1: hsl(210 100% 59%);
+      --＠color-2: hsl(310 100% 59%);
+    }
+  }
+
+  h2 {
+    /* apply variable changes over time */
+    animation: gradient-change 4s linear infinite alternate;
+
+    background: linear-gradient(
+      /* 
+      in oklch produces more vibrant gradient results 
+      learn more https://developer.chrome.com/docs/css-ui/access-colors-spaces#color_interpolation
+    */
+        to right in oklch,
+      /* use the variables in a gradient (or wherever!) */ var(--＠color-1),
+      var(--＠color-2)
+    );
+
+    /* old browser support */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* modern browser version */
+    background-clip: text;
+    color: transparent;
+  }
+
+  @media (prefers-reduced-motion) {
+    h2 {
+      animation: none;
     }
   }
 </style>
